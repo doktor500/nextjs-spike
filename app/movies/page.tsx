@@ -8,9 +8,11 @@ const Movies = async () => {
 
   return (
     <main>
-      {movies.map((movie) => (
-        <MovieDetails key={movie.id} movie={movie} />
-      ))}
+      <div className="grid gap-16 grid-cols-fluid">
+        {movies.map((movie) => (
+          <MovieDetails key={movie.id} movie={movie} />
+        ))}
+      </div>
     </main>
   );
 };
