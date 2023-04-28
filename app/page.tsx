@@ -1,7 +1,3 @@
-import Movies from "@/app/movies/page";
+const Home = async () => "";
 
-export default function Home() {
-  return (
-    <Movies/>
-  )
-}
+export default Home;
