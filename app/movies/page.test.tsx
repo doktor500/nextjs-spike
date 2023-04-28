@@ -1,13 +1,16 @@
+import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
+
 import Movies from "@/app/movies/page";
-import React from "react";
+import { movies } from "@/fakes/movies/infrastructure/repositories/defaultMoviesRepository";
 
 describe("Movie page", () => {
   it("displays list of movies", async () => {
     const MoviesComponent = await renderAsync(Movies);
     render(<MoviesComponent />);
-    expect(screen.getByText("Cocaine Bear")).toBeInTheDocument();
+
+    expect(screen.getByText(movies[0].name)).toBeInTheDocument();
   });
 });
 

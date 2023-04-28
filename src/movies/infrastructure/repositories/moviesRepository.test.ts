@@ -1,11 +1,11 @@
-import ExternalMoviesRepository from "@/app/movies/repositories/externalMoviesRepository";
-import FakeMoviesRepository from "@/app/movies/repositories/fakeMoviesRepository";
+import DefaultMoviesRepository from "@/src/movies/infrastructure/repositories/defaultMoviesRepository";
+import FakeMoviesRepository from "@/fakes/movies/infrastructure/repositories/defaultMoviesRepository";
 import MoviesRepository from "@/src/movies/application/repositories/moviesRepository";
 
 describe("Movies repository", () => {
   it.each`
     repository
-    ${new ExternalMoviesRepository()}
+    ${new DefaultMoviesRepository()}
     ${new FakeMoviesRepository()}
   `(
     "returns list of popular movies",

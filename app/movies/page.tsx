@@ -1,7 +1,8 @@
-import ExternalMoviesRepository from "@/app/movies/repositories/externalMoviesRepository";
+import DefaultMoviesRepository from "@/src/movies/infrastructure/repositories/defaultMoviesRepository";
+
+const moviesRepository = new DefaultMoviesRepository();
 
 const Movies = async () => {
-  const moviesRepository = new ExternalMoviesRepository();
   const movies = await moviesRepository.getAll();
 
   return (
