@@ -7,14 +7,13 @@ describe("Movies repository", () => {
     repository
     ${new DefaultMoviesRepository()}
     ${new FakeMoviesRepository()}
-  `(
-    "returns list of popular movies",
-    async ({ repository }: { repository: MoviesRepository }) => {
-      const movies = await repository.getAll();
+  `("returns list of popular movies", async ({ repository }: { repository: MoviesRepository }) => {
+    const movies = await repository.getAll();
 
-      expect(movies).not.toHaveLength(0);
-      expect(movies[0].id).not.toBeNull();
-      expect(movies[0].name).not.toBeNull();
-    }
-  );
+    expect(movies).not.toHaveLength(0);
+    expect(movies[0].id).not.toBeNull();
+    expect(movies[0].title).not.toBeNull();
+    expect(movies[0].releaseDate).not.toBeNull();
+    expect(movies[0].posterPath).not.toBeNull();
+  });
 });

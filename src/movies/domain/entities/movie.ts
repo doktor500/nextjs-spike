@@ -1,6 +1,8 @@
 type Movie = {
   id: string;
-  name: string;
+  title: string;
+  posterPath: URL;
+  releaseDate: Date;
 };
 
 export default Movie;

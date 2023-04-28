@@ -7,21 +7,27 @@ import { config } from "@/app/config";
 type MovieResponse = {
   id: string;
   original_title: string;
+  poster_path: string;
+  release_date: string;
 };
 
-export default class DefaultMoviesRepository implements MoviesRepository {
-  private readonly MOVIES_API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${config.MOVIE_DB_API_KEY}`;
+const IMAGE_PATH = "https://www.themoviedb.org/t/p/original";
+const MOVIES_API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${config.MOVIE_DB_API_KEY}`;
 
+export default class DefaultMoviesRepository implements MoviesRepository {
   getAll(): Promise<Movie[]> {
-    return fetch(this.MOVIES_API_URL)
+    return fetch(MOVIES_API_URL)
       .then((data) => data.json())
       .then((response) => response.results)
-      .then(mapToMovies);
+      .then((movies: MovieResponse[]) => movies.map(mapToMovie));
   }
 }
 
-const mapToMovies = (movies: MovieResponse[]) =>
-  movies.map((movie: MovieResponse) => ({
+const mapToMovie = (movie: MovieResponse): Movie => {
+  return {
     id: movie.id,
-    name: movie.original_title,
-  }));
+    title: movie.original_title,
+    posterPath: new URL(`${IMAGE_PATH}/${movie.poster_path}`),
+    releaseDate: new Date(movie.release_date),
+  };
+};
