@@ -1,5 +1,3 @@
-import fetch from "isomorphic-fetch";
-
 import MoviesRepository from "@/src/modules/movies/application/repositories/moviesRepository";
 import Movie, { MovieId } from "@/src/modules/movies/domain/entities/movie";
 import { config } from "@/src/modules/config";
