@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { MovieId } from "@/src/movies/domain/entities/movie";
-import DefaultMoviesRepository from "@/src/movies/infrastructure/repositories/defaultMoviesRepository";
+import { MovieId } from "@/src/modules/movies/domain/entities/movie";
+import DefaultMoviesRepository from "@/src/modules/movies/infrastructure/repositories/defaultMoviesRepository";
 
 const moviesRepository = new DefaultMoviesRepository();
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { screen } from "@testing-library/react";
 
-import MovieDetail from "@/app/[movie]/page";
+import MovieDetail from "@/app/movies/[movie]/page";
 import { renderAsync } from "@/test/testUtils";
-import { movies } from "@/fakes/movies/infrastructure/repositories/defaultMoviesRepository";
+import { movies } from "@/test/modules/movies/infrastructure/repositories/defaultMoviesRepository";
 
 describe("Movie Detail", () => {
   it("renders a movie", async () => {

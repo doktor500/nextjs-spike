@@ -2,7 +2,7 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import Movies from "@/app/movies/page";
-import { movies } from "@/fakes/movies/infrastructure/repositories/defaultMoviesRepository";
+import { movies } from "@/test/modules/movies/infrastructure/repositories/defaultMoviesRepository";
 import { renderAsync } from "@/test/testUtils";
 
 describe("Movie page", () => {

@@ -1,4 +1,4 @@
-import DefaultMoviesRepository from "@/src/movies/infrastructure/repositories/defaultMoviesRepository";
+import DefaultMoviesRepository from "@/src/modules/movies/infrastructure/repositories/defaultMoviesRepository";
 import MovieDetails from "@/app/movies/components/movieDetails";
 
 const moviesRepository = new DefaultMoviesRepository();

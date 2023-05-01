@@ -1,6 +1,6 @@
-import DefaultMoviesRepository from "@/src/movies/infrastructure/repositories/defaultMoviesRepository";
-import FakeMoviesRepository, { movies } from "@/fakes/movies/infrastructure/repositories/defaultMoviesRepository";
-import MoviesRepository from "@/src/movies/application/repositories/moviesRepository";
+import DefaultMoviesRepository from "@/src/modules/movies/infrastructure/repositories/defaultMoviesRepository";
+import FakeMoviesRepository, { movies } from "@/test/modules/movies/infrastructure/repositories/defaultMoviesRepository";
+import MoviesRepository from "@/src/modules/movies/application/repositories/moviesRepository";
 
 describe("Movies repository", () => {
   it.each`

@@ -1,4 +1,4 @@
-import Movie, { MovieId } from "@/src/movies/domain/entities/movie";
+import Movie, { MovieId } from "@/src/modules/movies/domain/entities/movie";
 
 export default interface MoviesRepository {
   getById(id: MovieId): Promise<Movie | undefined>;
