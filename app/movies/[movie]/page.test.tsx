@@ -3,7 +3,7 @@ import { screen } from "@testing-library/react";
 
 import MovieDetail from "@/app/movies/[movie]/page";
 import { renderAsync } from "@/test/testUtils";
-import { movies } from "@/test/modules/movies/infrastructure/repositories/defaultMoviesRepository";
+import { movies } from "@/test/modules/movies/infrastructure/adapters/moviesClient";
 
 describe("Movie Detail", () => {
   it("renders a movie", async () => {

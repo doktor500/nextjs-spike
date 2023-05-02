@@ -1,4 +1,4 @@
-import MoviesRepository from "@/src/modules/movies/application/repositories/moviesRepository";
+import MoviesCatalogue from "@/src/modules/movies/application/moviesCatalogue";
 import Movie, { MovieId } from "@/src/modules/movies/domain/entities/movie";
 
 export const movies: Movie[] = [
@@ -13,7 +13,7 @@ export const movies: Movie[] = [
   },
 ];
 
-export default class FakeMoviesRepository implements MoviesRepository {
+export default class FakeMoviesClient implements MoviesCatalogue {
   async getById(id: MovieId): Promise<Movie | undefined> {
     return movies.find((movie) => movie.id === id);
   }

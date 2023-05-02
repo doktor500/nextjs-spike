@@ -30,7 +30,7 @@ Open [http://localhost:3000/](http://localhost:3000) with your browser to see th
 
 ## Implementation Notes
 
-This repository contains an example of how to use an hexagonal architecture approach (A.K.A ports and adapters) in a
+This repository contains an example of how to use a hexagonal architecture approach (A.K.A ports and adapters) in a
 NextJS application.
 
 ## Implementation Notes

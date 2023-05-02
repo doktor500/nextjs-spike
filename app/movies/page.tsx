@@ -1,10 +1,10 @@
-import DefaultMoviesRepository from "@/src/modules/movies/infrastructure/repositories/defaultMoviesRepository";
+import HTTPMoviesClient from "@/src/modules/movies/infrastructure/adapters/moviesClient";
 import MovieDetails from "@/app/movies/components/movieDetails";
 
-const moviesRepository = new DefaultMoviesRepository();
+const moviesClient = new HTTPMoviesClient();
 
 const Movies = async () => {
-  const movies = await moviesRepository.getAll();
+  const movies = await moviesClient.getAll();
 
   return (
     <main>

@@ -1,4 +1,4 @@
-import MoviesRepository from "@/src/modules/movies/application/repositories/moviesRepository";
+import MoviesCatalogue from "@/src/modules/movies/application/moviesCatalogue";
 import Movie, { MovieId } from "@/src/modules/movies/domain/entities/movie";
 import { config } from "@/src/modules/config";
 
@@ -14,7 +14,7 @@ type MovieResponse = {
 const IMAGE_PATH = "https://www.themoviedb.org/t/p/original";
 const BASE_API_URL = "https://api.themoviedb.org/3/movie/";
 
-export default class DefaultMoviesRepository implements MoviesRepository {
+export default class HTTPMoviesClient implements MoviesCatalogue {
   getById(id: MovieId): Promise<Movie | undefined> {
     return fetch(`${BASE_API_URL}/${id}?api_key=${config.MOVIE_DB_API_KEY}`)
       .then((data) => data.json())
