@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/generate-tsconfig.js; next dev; node scripts/restore-tsconfig.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
