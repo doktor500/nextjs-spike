@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest ./app ./src"
   },
   "dependencies": {
     "@types/node": "18.16.2",

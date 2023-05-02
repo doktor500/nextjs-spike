@@ -1,7 +1,7 @@
 import MoviesCatalogue from "@/src/modules/movies/application/moviesCatalogue";
 import Movie, { MovieId } from "@/src/modules/movies/domain/entities/movie";
 
-export const movies: Movie[] = [
+const movies: Movie[] = [
   {
     id: "603",
     title: "The Matrix",

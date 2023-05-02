@@ -66,7 +66,7 @@ know what has actually failed and why.
 When running browser tests the idea is to run them against fake dependencies, this way these tests will be fast to run
 and stable since they won't fail if the external dependency is experiencing issues, only the integration tests will.
 
-Note how the `app/movies/page.test.tsx` can use now a fake implementation of the Movies Catalogue, there is no need to
+Note how the `app/movies/page.spec.tsx` can use now a fake implementation of the Movies Catalogue, there is no need to
 use complex mocking frameworks to check that the content is rendered on the page as we expect.
 
 When implementing integrations against internal APIs that we have control over, we could also implement contract tests

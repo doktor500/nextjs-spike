@@ -3,7 +3,7 @@ import { defineConfig } from "cypress";
 export default defineConfig({
   e2e: {
     baseUrl: "http://localhost:3000",
-    specPattern: ["test/cypress/e2e/**/*.test.ts"],
+    specPattern: ["test/e2e/**/*.spec.ts"],
     supportFile: false,
   },
 });

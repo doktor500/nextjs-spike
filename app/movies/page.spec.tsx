@@ -2,11 +2,15 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import Movies from "@/app/movies/page";
-import { movies } from "@/fakes/modules/movies/infrastructure/adapters/moviesClient";
-import { renderAsync } from "@/fakes/testUtils";
+import MoviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
+
+import { renderAsync } from "@/test/testUtils";
 
 describe("Movie page", () => {
+  const moviesCatalogue = new MoviesCatalogue();
+
   it("renders the list of movies", async () => {
+    const movies = await moviesCatalogue.getAll();
     await renderAsync(Movies);
 
     expect(screen.getByText(movies[0].title)).toBeInTheDocument();

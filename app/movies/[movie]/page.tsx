@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 import { MovieId } from "@/src/modules/movies/domain/entities/movie";
-import HTTPMoviesClient from "@/src/modules/movies/infrastructure/adapters/moviesClient";
+import MoviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
 
-const moviesClient = new HTTPMoviesClient();
+const moviesCatalogue = new MoviesCatalogue();
 
 const MovieDetail = async ({ params }: { params: { movie: MovieId } }) => {
-  const movie = await moviesClient.getById(params.movie);
+  const movie = await moviesCatalogue.getById(params.movie);
   if (!movie) return;
 
   return (
