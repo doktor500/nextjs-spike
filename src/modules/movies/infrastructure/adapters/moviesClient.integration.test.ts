@@ -1,5 +1,5 @@
 import HTTPMoviesClient from "@/src/modules/movies/infrastructure/adapters/moviesClient";
-import FakeMoviesClient, { movies } from "@/test/modules/movies/infrastructure/adapters/moviesClient";
+import FakeMoviesClient, { movies } from "@/fakes/modules/movies/infrastructure/adapters/moviesClient";
 import MoviesCatalogue from "@/src/modules/movies/application/moviesCatalogue";
 
 describe("Movies catalogue", () => {

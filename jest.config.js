@@ -6,7 +6,7 @@ const customJestConfig = {
   testEnvironment: "jest-environment-jsdom",
   setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
   moduleNameMapper: {
-    "src/modules/movies/infrastructure/(.*)": ["<rootDir>/test/modules/movies/infrastructure/$1"],
+    "src/modules/movies/infrastructure/(.*)": ["<rootDir>/fakes/modules/movies/infrastructure/$1"],
   },
 };
 
