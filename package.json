@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "dev": "node scripts/generate-tsconfig.js; next dev; node scripts/restore-tsconfig.js",
     "build": "next build",
     "start": "next start",
@@ -27,6 +29,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/isomorphic-fetch": "^0.0.36",
+    "cypress": "^12.11.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-hexagonal-architecture": "^1.0.3",
     "eslint-plugin-prettier": "^4.2.1",
