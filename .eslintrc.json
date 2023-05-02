@@ -3,7 +3,27 @@
     "next/core-web-vitals",
     "plugin:prettier/recommended"
   ],
+  "plugins": [
+    "hexagonal-architecture"
+  ],
   "rules": {
-    "prettier/prettier": ["error", { "printWidth": 120 }]
-  }
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 120
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/modules/**/*.ts"
+      ],
+      "rules": {
+        "hexagonal-architecture/enforce": [
+          "error"
+        ]
+      }
+    }
+  ]
 }

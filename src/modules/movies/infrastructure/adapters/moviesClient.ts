@@ -1,6 +1,6 @@
 import MoviesCatalogue from "@/src/modules/movies/application/moviesCatalogue";
 import Movie, { MovieId } from "@/src/modules/movies/domain/entities/movie";
-import { config } from "@/src/modules/config";
+import { config } from "@/src/modules/shared/infrastructure/config";
 
 type MovieResponse = {
   id: string;

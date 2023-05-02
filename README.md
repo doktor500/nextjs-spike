@@ -98,4 +98,9 @@ we are able to move from one codebase to another and understand how the project 
 or the framework being used. In this particular case, we can't achieve that with the `app/` directory since NextJs is a
 very opinionated framework, but we have minimised the impact of it. You can reason about the `app/` directory as a
 directory that should live inside `infrastructure/` and a directory that should contain everything related to the UI of
-this app. 
+this app.
+
+An eslint plugin called `eslint-plugin-hexagonal-architecture` has been added to the project in order to have a way of
+enforcing the hexagonal architecture directory structure, so, if for instance if in a domain entity an import from the
+infrastructure or application layers is used, the linter will fail and the error will be visible on the IDE if
+configured correctly.
