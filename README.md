@@ -3,7 +3,7 @@
 Setup an API Key to be able to fetch movies from [themoviedb.org](https://www.themoviedb.org/)
 
 - Create a new account on [themoviedb.org/signup](https://www.themoviedb.org/signup)
-- Go to settings [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api)
+- Go to settings [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api) and create a new API Key
 - Create two files (one will be used when running the app and the other one will be used when running the tests)
     ```bash
         touch .env.local
