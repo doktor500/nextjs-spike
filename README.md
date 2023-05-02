@@ -65,3 +65,37 @@ easier to know what has actually failed and why.
 
 When running browser tests the idea is to run them against fake dependencies, this way these tests will be fast to run
 and stable since they won't fail if the external dependency is experiencing issues, only the integration tests will.
+
+Note how the `app/movies/page.tes.tsx` can use now a fake implementation of the Movies Catalogue, there is no need to
+use complex mocking frameworks to check that the content is rendered on the page as we expect.
+
+When implementing integrations against internal APIs that we have control over, we could also have contract tests in
+place that have some advantages over the traditional integration testing approach.
+
+### Hexagonal architecture
+
+By following the approach of having a port (interface) and an adapter that is the implementation of the interface, and
+placing everything that has to do with external dependencies in the infrastructure directory, we are creating an
+anti-corruption layer on top of those external dependencies like what we've done here with
+the [themoviedb.org](https://www.themoviedb.org/) external API.
+
+Note that the MoviesCatalogue implementation returns domain objects such as a `Movie` and not entities or types that
+belong to the external dependency, the adapter is responsible to adapt the domain from the external dependency to the
+core domain of the app.
+
+This way to structure the code and dependencies allow us to isolate the system from external dependencies and simplify
+the migration to a different API or provider if we need to do so.
+
+Also, if we use the standard way of structuring directories and separating the code in 3 different layers
+
+```
+  - domain
+  - application
+  - infrastructure
+```
+
+we are able to move from one codebase to another and understand how the project is structured no matter the tech stack
+or the framework being used. In this particular case, we can't achieve that with the `app/` directory since NextJs is a
+very opinionated framework, but we have minimised the impact of it. You can reason about the `app/` directory as a
+directory that should live inside `infrastructure/` and a directory that should contain everything related to the UI of
+this app. 
