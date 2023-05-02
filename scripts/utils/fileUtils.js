@@ -8,6 +8,14 @@ const copyFile = (source, destination) => {
   }
 };
 
+const deleteDirectory = (directory) => {
+  try {
+    fs.rmSync(directory, { recursive: true });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const deleteFile = (file) => {
   try {
     fs.unlinkSync(file);
@@ -27,4 +35,4 @@ const fileExists = (file) => {
   return false;
 };
 
-module.exports = { copyFile, deleteFile, fileExists };
+module.exports = { copyFile, deleteDirectory, deleteFile, fileExists };
