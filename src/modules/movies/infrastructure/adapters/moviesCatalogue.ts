@@ -14,7 +14,7 @@ type MovieResponse = {
 const IMAGE_PATH = "https://www.themoviedb.org/t/p/original";
 const BASE_API_URL = "https://api.themoviedb.org/3/movie/";
 
-export default class HTTPMoviesClient implements MoviesCatalogue {
+class HTTPMoviesClient implements MoviesCatalogue {
   getById(id: MovieId): Promise<Movie | undefined> {
     return fetch(`${BASE_API_URL}/${id}?api_key=${config.MOVIE_DB_API_KEY}`)
       .then((data) => data.json())
@@ -39,3 +39,7 @@ const mapToMovie = (movie: MovieResponse): Movie => {
     releaseDate: new Date(movie.release_date),
   };
 };
+
+const moviesCatalogue: MoviesCatalogue = new HTTPMoviesClient();
+
+export default moviesCatalogue;

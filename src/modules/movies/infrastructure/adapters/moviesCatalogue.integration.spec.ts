@@ -1,12 +1,12 @@
-import HTTPMoviesClient from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
-import FakeMoviesClient from "@/fakes/modules/movies/infrastructure/adapters/moviesCatalogue";
+import httpMoviesClient from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
+import fakeMoviesClient from "@/fakes/modules/movies/infrastructure/adapters/moviesCatalogue";
 import MoviesCatalogue from "@/src/modules/movies/application/moviesCatalogue";
 
 describe("Movies catalogue", () => {
   it.each`
     moviesCatalogue
-    ${new HTTPMoviesClient()}
-    ${new FakeMoviesClient()}
+    ${httpMoviesClient}
+    ${fakeMoviesClient}
   `("returns list of popular movies", async ({ moviesCatalogue }: { moviesCatalogue: MoviesCatalogue }) => {
     const movies = await moviesCatalogue.getAll();
 
@@ -20,8 +20,8 @@ describe("Movies catalogue", () => {
 
   it.each`
     moviesCatalogue
-    ${new HTTPMoviesClient()}
-    ${new FakeMoviesClient()}
+    ${httpMoviesClient}
+    ${fakeMoviesClient}
   `("returns a movie by id", async ({ moviesCatalogue }: { moviesCatalogue: MoviesCatalogue }) => {
     const movies = await moviesCatalogue.getAll();
     const movie = await moviesCatalogue.getById(movies[0].id);

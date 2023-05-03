@@ -1,9 +1,7 @@
 import Image from "next/image";
 
 import { MovieId } from "@/src/modules/movies/domain/entities/movie";
-import MoviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
-
-const moviesCatalogue = new MoviesCatalogue();
+import moviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
 
 const MovieDetail = async ({ params }: { params: { movie: MovieId } }) => {
   const movie = await moviesCatalogue.getById(params.movie);

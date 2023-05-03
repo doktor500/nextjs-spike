@@ -1,7 +1,5 @@
-import MoviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
+import moviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
 import MovieDetails from "@/app/movies/components/movieDetails";
-
-const moviesCatalogue = new MoviesCatalogue();
 
 const Movies = async () => {
   const movies = await moviesCatalogue.getAll();

@@ -13,7 +13,7 @@ const movies: Movie[] = [
   },
 ];
 
-export default class FakeMoviesClient implements MoviesCatalogue {
+class FakeMoviesClient implements MoviesCatalogue {
   async getById(id: MovieId): Promise<Movie | undefined> {
     return movies.find((movie) => movie.id === id);
   }
@@ -22,3 +22,7 @@ export default class FakeMoviesClient implements MoviesCatalogue {
     return movies;
   }
 }
+
+const fakeMoviesClient: MoviesCatalogue = new FakeMoviesClient();
+
+export default fakeMoviesClient;
