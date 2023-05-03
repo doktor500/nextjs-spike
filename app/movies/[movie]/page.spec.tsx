@@ -5,11 +5,11 @@ import MovieDetail from "@/app/movies/[movie]/page";
 import moviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
 
 import { renderAsync } from "@/test/testUtils";
+import Movie from "@/src/modules/movies/domain/entities/movie";
 
 describe("Movie Detail", () => {
   it("renders a movie", async () => {
-    const movies = await moviesCatalogue.getAll();
-    const movie = movies[0];
+    const movie = await getMovie();
 
     await renderAsync(MovieDetail, { params: { movie: movie.id } });
 
@@ -18,4 +18,9 @@ describe("Movie Detail", () => {
     expect(screen.getByText(`Duration: ${movie.duration} minutes`)).toBeInTheDocument();
     expect(screen.getByText(movie.overview)).toBeInTheDocument();
   });
+
+  const getMovie = async (): Promise<Movie> => {
+    const movies = await moviesCatalogue.getAll();
+    return moviesCatalogue.getById(movies[0].id).then((movie) => movie as Movie);
+  };
 });
