@@ -7,7 +7,7 @@ Set up an API Key to be able to fetch movies from [themoviedb.org](https://www.t
 - Create two files (one will be used when running the app and the other one will be used when running the tests)
     ```bash
         touch .env.local
-        touch .env.fakes.local
+        touch .env.test.local
     ```
 - Add the API Key to both files, so that they look like
     ```bash
