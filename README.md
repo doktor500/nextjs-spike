@@ -33,7 +33,7 @@ Open [http://localhost:3000/](http://localhost:3000) with your browser to see th
 This repository contains an example of how to use a hexagonal architecture approach (A.K.A. ports and adapters) in a
 NextJS application.
 
-This repository uses Next13 with the new experimental app directory, TurboPack and TailWind CSS.
+This repository uses NextJS 13 with the new experimental app directory, TurboPack and TailWind CSS.
 
 ### Directory structure and conventions
 
