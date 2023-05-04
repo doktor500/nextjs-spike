@@ -4,7 +4,7 @@ const copyFile = (source, destination) => {
   try {
     fs.copyFileSync(source, destination);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -12,7 +12,7 @@ const deleteDirectory = (directory) => {
   try {
     fs.rmSync(directory, { recursive: true });
   } catch (error) {
-    console.log(error);
+    console.log("The directory does not exist");
   }
 };
 
@@ -20,7 +20,7 @@ const deleteFile = (file) => {
   try {
     fs.unlinkSync(file);
   } catch (error) {
-    console.log(error);
+    console.log("The directory does not exist");
   }
 };
 
