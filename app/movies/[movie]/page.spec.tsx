@@ -19,6 +19,14 @@ describe("Movie Detail", () => {
     expect(screen.getByText(movie.overview)).toBeInTheDocument();
   });
 
+  it("renders a button to purchase the movie if the purchase URL is present", async () => {
+    const movie = await getMovie();
+
+    await renderAsync(MovieDetail, { params: { movie: movie.id } });
+
+    expect(screen.getByRole("link")).toHaveAttribute("href", movie.purchaseUrl?.href);
+  });
+
   const getMovie = async (): Promise<Movie> => {
     const movies = await moviesCatalogue.getAll();
     return moviesCatalogue.getById(movies[0].id).then((movie) => movie as Movie);

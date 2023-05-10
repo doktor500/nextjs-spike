@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { MovieId } from "@/src/modules/movies/domain/entities/movie";
 import moviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
@@ -16,6 +17,17 @@ const MovieDetail = async ({ params }: { params: { movie: MovieId } }) => {
       </div>
       <Image className="my-12 w-96" src={movie.posterPath.href} alt={movie.title} width="400" height="400" />
       <p className="w-96">{movie.overview}</p>
+      {movie.purchaseUrl && (
+        <Link href={movie.purchaseUrl.href}>
+          <Image
+            className="my-12 w-32"
+            src={"/images/prime-video.png"}
+            alt={`buy ${movie.title}`}
+            width="400"
+            height="400"
+          />
+        </Link>
+      )}
     </div>
   );
 };

@@ -1,44 +1,27 @@
 import MoviesCatalogue from "@/src/modules/movies/application/moviesCatalogue";
 import Movie, { MovieId } from "@/src/modules/movies/domain/entities/movie";
-import { config } from "@/src/modules/shared/infrastructure/config";
-
-type MovieResponse = {
-  id: string;
-  original_title: string;
-  overview: string;
-  runtime: number;
-  poster_path: string;
-  release_date: string;
-};
-
-const IMAGE_PATH = "https://www.themoviedb.org/t/p/original";
-const BASE_API_URL = "https://api.themoviedb.org/3/movie/";
+import { MoviesRepository } from "@/src/modules/movies/infrastructure/adapters/repositories/moviesRepository";
+import { MoviesCms } from "@/src/modules/movies/infrastructure/adapters/cms/moviesCms";
 
 class HTTPMoviesClient implements MoviesCatalogue {
+  private readonly moviesRepository = new MoviesRepository();
+  private readonly moviesCms = new MoviesCms();
+
   getById(id: MovieId): Promise<Movie | undefined> {
-    return fetch(`${BASE_API_URL}/${id}?api_key=${config.MOVIE_DB_API_KEY}`)
-      .then((data) => data.json())
-      .then(mapToMovie);
+    return Promise.all([this.moviesRepository.getById(id), this.moviesCms.getById(id)]).then(
+      ([movie, movieMetadata]) => movie && { ...movie, purchaseUrl: movieMetadata?.purchaseUrl }
+    );
   }
 
   getAll(): Promise<Movie[]> {
-    return fetch(`${BASE_API_URL}/popular?api_key=${config.MOVIE_DB_API_KEY}`)
-      .then((data) => data.json())
-      .then((response) => response.results)
-      .then((movies: MovieResponse[]) => movies.map(mapToMovie));
+    return Promise.all([this.moviesRepository.getAll(), this.moviesCms.getAll()]).then(([movies, movieMetadata]) => {
+      return movies.map((movie) => ({
+        ...movie,
+        purchaseUrl: movieMetadata.find((movie) => movie.id === movie.id)?.purchaseUrl,
+      }));
+    });
   }
 }
-
-const mapToMovie = (movie: MovieResponse): Movie => {
-  return {
-    id: movie.id,
-    title: movie.original_title,
-    overview: movie.overview,
-    duration: movie.runtime,
-    posterPath: new URL(`${IMAGE_PATH}/${movie.poster_path}`),
-    releaseDate: new Date(movie.release_date),
-  };
-};
 
 const moviesCatalogue: MoviesCatalogue = new HTTPMoviesClient();
 
