@@ -1,10 +1,9 @@
-import Movie, { MovieId } from "@/src/modules/movies/domain/entities/movie";
+import { MovieId } from "@/src/modules/movies/domain/entities/movie";
 import { config } from "@/src/modules/shared/infrastructure/config";
+import MoviesRepository, { MovieDTO } from "@/src/modules/movies/application/repositories/moviesRepository";
 
 const IMAGE_PATH = "https://www.themoviedb.org/t/p/original";
 const BASE_API_URL = "https://api.themoviedb.org/3/movie/";
-
-type MovieDetails = Omit<Movie, "purchaseUrl">;
 
 type MovieResponse = {
   id: number;
@@ -15,22 +14,22 @@ type MovieResponse = {
   release_date: string;
 };
 
-export class MoviesRepository {
-  getById(id: MovieId): Promise<MovieDetails | undefined> {
+export default class HttpMoviesRepository implements MoviesRepository {
+  getById(id: MovieId): Promise<MovieDTO | undefined> {
     return fetch(`${BASE_API_URL}/${id}?api_key=${config.MOVIE_DB_API_KEY}`)
       .then((data) => data.json())
-      .then(mapToMovie);
+      .then(mapToMovieDetails);
   }
 
-  getAll(): Promise<MovieDetails[]> {
+  getAll(): Promise<MovieDTO[]> {
     return fetch(`${BASE_API_URL}/popular?api_key=${config.MOVIE_DB_API_KEY}`)
       .then((data) => data.json())
       .then((response) => response.results)
-      .then((movies: MovieResponse[]) => movies.map(mapToMovie));
+      .then((movies: MovieResponse[]) => movies.map(mapToMovieDetails));
   }
 }
 
-const mapToMovie = (movie: MovieResponse): MovieDetails => {
+const mapToMovieDetails = (movie: MovieResponse): MovieDTO => {
   return {
     id: movie.id,
     title: movie.original_title,

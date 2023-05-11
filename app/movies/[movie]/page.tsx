@@ -2,10 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { MovieId } from "@/src/modules/movies/domain/entities/movie";
-import moviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
+import MoviesCatalogue from "@/src/modules/movies/infrastructure/defaultMoviesCatalogue";
+
+const moviesCatalogue = new MoviesCatalogue();
 
 const MovieDetail = async ({ params }: { params: { movie: MovieId } }) => {
-  const movie = await moviesCatalogue.getById(params.movie);
+  const movie = await moviesCatalogue.getById(Number(params.movie));
   if (!movie) return;
 
   return (

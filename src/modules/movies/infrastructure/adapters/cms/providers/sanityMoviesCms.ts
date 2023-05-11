@@ -3,18 +3,13 @@ import { head } from "ramda";
 
 import { MovieId } from "@/src/modules/movies/domain/entities/movie";
 import { config } from "@/src/modules/shared/infrastructure/config";
+import {
+  mapToMovieContent,
+  MovieCMSResponse,
+} from "@/src/modules/movies/infrastructure/adapters/cms/mapper/movieMapper";
+import MoviesCms, { MovieContent } from "@/src/modules/movies/application/cms/moviesCms";
 
-type MovieCMSResponse = {
-  id: number;
-  purchaseUrl: string | undefined;
-};
-
-type MovieContent = {
-  id: MovieId;
-  purchaseUrl: URL | undefined;
-};
-
-export class MoviesCms {
+export default class SanityMoviesCms implements MoviesCms {
   private readonly client = createClient({
     projectId: config.SANITY_IO_PROJECT_ID,
     dataset: config.SANITY_IO_DATASET,
@@ -32,8 +27,3 @@ export class MoviesCms {
     return this.client.fetch(`*[_type == "movie"]`).then((movies) => movies.map(mapToMovieContent));
   }
 }
-
-const mapToMovieContent = (movie: MovieCMSResponse): MovieContent => {
-  const purchaseUrl = movie.purchaseUrl ? new URL(movie.purchaseUrl) : undefined;
-  return { id: movie.id, purchaseUrl };
-};
