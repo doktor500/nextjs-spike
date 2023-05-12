@@ -6,4 +6,5 @@ export const config = Object.freeze({
   CONTENTFUL_SPACE: process.env.CONTENTFUL_SPACE ?? "",
   CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT ?? "",
   CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN ?? "",
+  STRAPI_IO_API_TOKEN: process.env.STRAPI_IO_API_TOKEN ?? "",
 });
