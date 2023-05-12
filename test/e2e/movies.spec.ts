@@ -1,11 +1,17 @@
-import moviesCatalogue from "@/src/modules/movies/infrastructure/adapters/moviesCatalogue";
+import MoviesCatalogue from "@/src/modules/movies/infrastructure/defaultMoviesCatalogue";
 
-describe("The popular movies page", () => {
-  it("is displayed successfully", async () => {
-    const movies = await moviesCatalogue.getAll();
-    const movie = movies[0];
+const moviesCatalogue = new MoviesCatalogue();
 
+describe("The popular movies page", async () => {
+  const movies = await moviesCatalogue.getAll();
+  const movie = movies[0];
+
+  it("is displayed successfully", () => {
     cy.visit("/");
     cy.contains(movie.title);
+
+    cy.get("a").first().click();
+    cy.contains(movie.title);
+    cy.contains(movie.duration);
   });
 });

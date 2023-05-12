@@ -1,3 +1,10 @@
 export const config = Object.freeze({
   MOVIE_DB_API_KEY: process.env.MOVIE_DB_API_KEY ?? "",
+  SANITY_IO_PROJECT_ID: process.env.SANITY_IO_PROJECT_ID ?? "",
+  SANITY_IO_API_VERSION: process.env.SANITY_IO_API_VERSION ?? "",
+  SANITY_IO_DATASET: process.env.SANITY_IO_DATASET ?? "",
+  CONTENTFUL_SPACE: process.env.CONTENTFUL_SPACE ?? "",
+  CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT ?? "",
+  CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN ?? "",
+  STRAPI_IO_API_TOKEN: process.env.STRAPI_IO_API_TOKEN ?? "",
 });

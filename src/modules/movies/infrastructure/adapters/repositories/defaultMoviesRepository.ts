@@ -1,9 +1,12 @@
-import MoviesCatalogue from "@/src/modules/movies/application/moviesCatalogue";
-import Movie, { MovieId } from "@/src/modules/movies/domain/entities/movie";
+import { MovieId } from "@/src/modules/movies/domain/entities/movie";
 import { config } from "@/src/modules/shared/infrastructure/config";
+import MoviesRepository, { MovieDTO } from "@/src/modules/movies/application/repositories/moviesRepository";
+
+const IMAGE_PATH = "https://www.themoviedb.org/t/p/original";
+const BASE_API_URL = "https://api.themoviedb.org/3/movie/";
 
 type MovieResponse = {
-  id: string;
+  id: number;
   original_title: string;
   overview: string;
   runtime: number;
@@ -11,25 +14,22 @@ type MovieResponse = {
   release_date: string;
 };
 
-const IMAGE_PATH = "https://www.themoviedb.org/t/p/original";
-const BASE_API_URL = "https://api.themoviedb.org/3/movie/";
-
-class HTTPMoviesClient implements MoviesCatalogue {
-  getById(id: MovieId): Promise<Movie | undefined> {
+export default class HttpMoviesRepository implements MoviesRepository {
+  getById(id: MovieId): Promise<MovieDTO | undefined> {
     return fetch(`${BASE_API_URL}/${id}?api_key=${config.MOVIE_DB_API_KEY}`)
       .then((data) => data.json())
-      .then(mapToMovie);
+      .then(mapToMovieDetails);
   }
 
-  getAll(): Promise<Movie[]> {
+  getAll(): Promise<MovieDTO[]> {
     return fetch(`${BASE_API_URL}/popular?api_key=${config.MOVIE_DB_API_KEY}`)
       .then((data) => data.json())
       .then((response) => response.results)
-      .then((movies: MovieResponse[]) => movies.map(mapToMovie));
+      .then((movies: MovieResponse[]) => movies.map(mapToMovieDetails));
   }
 }
 
-const mapToMovie = (movie: MovieResponse): Movie => {
+const mapToMovieDetails = (movie: MovieResponse): MovieDTO => {
   return {
     id: movie.id,
     title: movie.original_title,
@@ -39,7 +39,3 @@ const mapToMovie = (movie: MovieResponse): Movie => {
     releaseDate: new Date(movie.release_date),
   };
 };
-
-const moviesCatalogue: MoviesCatalogue = new HTTPMoviesClient();
-
-export default moviesCatalogue;

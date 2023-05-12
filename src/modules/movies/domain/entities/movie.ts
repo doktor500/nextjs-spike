@@ -1,4 +1,4 @@
-export type MovieId = string;
+export type MovieId = number;
 export type Minutes = number;
 
 type Movie = {
@@ -8,6 +8,7 @@ type Movie = {
   posterPath: URL;
   releaseDate: Date;
   duration: Minutes;
+  purchaseUrl?: URL;
 };
 
 export default Movie;
