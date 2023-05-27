@@ -22,7 +22,8 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@/src/modules/movies/infrastructure/*": ["./fakes/modules/movies/infrastructure/*"]
+      "@/src/modules/movies/infrastructure/*": ["./fakes/modules/movies/infrastructure/*"],
+      "@/src/modules/shared/infrastructure/*": ["./fakes/modules/shared/infrastructure/*"]
     },
     "types": ["node", "jest", "cypress", "@types/testing-library__jest-dom"]
   },

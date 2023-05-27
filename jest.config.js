@@ -7,6 +7,7 @@ const customJestConfig = {
   setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
   moduleNameMapper: {
     "src/modules/movies/infrastructure/(.*)": ["<rootDir>/fakes/modules/movies/infrastructure/$1"],
+    "src/modules/shared/infrastructure/(.*)": ["<rootDir>/fakes/modules/shared/infrastructure/$1"],
   },
 };
 
