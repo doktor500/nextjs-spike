@@ -26,7 +26,7 @@ describe("Movie Detail", () => {
 
     await renderAsync(MovieDetail, { params: { movie: movie.id } });
 
-    expect(screen.getByRole("link")).toHaveAttribute("href", movie.purchaseUrl?.href);
+    expect(screen.getByRole("link")).toHaveAttribute("href", movie.purchaseUrl);
   });
 
   const getMovie = async (): Promise<Movie> => {

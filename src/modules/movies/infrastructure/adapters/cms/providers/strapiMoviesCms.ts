@@ -33,6 +33,5 @@ export default class StrapiMoviesCms implements MoviesCms {
 }
 
 const mapToMovie = (movie: MovieCMSResponse): MovieContent => {
-  const purchaseUrl = movie.purchaseUrl ? new URL(movie.purchaseUrl) : undefined;
-  return { id: Number(movie.movieId), purchaseUrl };
+  return { id: Number(movie.movieId), purchaseUrl: movie.purchaseUrl };
 };

@@ -6,6 +6,5 @@ export type MovieCMSResponse = {
 };
 
 export const mapToMovieContent = (movie: MovieCMSResponse): MovieContent => {
-  const purchaseUrl = movie.purchaseUrl ? new URL(movie.purchaseUrl) : undefined;
-  return { id: movie.id, purchaseUrl };
+  return { id: movie.id, purchaseUrl: movie.purchaseUrl };
 };

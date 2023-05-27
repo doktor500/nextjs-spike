@@ -35,7 +35,7 @@ const mapToMovieDetails = (movie: MovieResponse): MovieDTO => {
     title: movie.original_title,
     overview: movie.overview,
     duration: movie.runtime,
-    posterPath: new URL(`${IMAGE_PATH}/${movie.poster_path}`),
+    posterPath: `${IMAGE_PATH}/${movie.poster_path}`,
     releaseDate: new Date(movie.release_date),
   };
 };

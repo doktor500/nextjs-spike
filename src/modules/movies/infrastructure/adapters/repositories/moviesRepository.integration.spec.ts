@@ -34,6 +34,6 @@ describe("Movies repository", () => {
     );
     expect(movie?.duration).toEqual(136);
     expect(movie?.releaseDate).toEqual(new Date("1999-03-30T00:00:00.000Z"));
-    expect(movie?.posterPath).toEqual(new URL("https://www.themoviedb.org/t/p/w1280/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"));
+    expect(movie?.posterPath).toEqual("https://www.themoviedb.org/t/p/w1280/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg");
   });
 });

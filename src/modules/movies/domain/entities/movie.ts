@@ -5,10 +5,10 @@ type Movie = {
   id: MovieId;
   title: string;
   overview: string;
-  posterPath: URL;
+  posterPath: string;
   releaseDate: Date;
   duration: Minutes;
-  purchaseUrl?: URL;
+  purchaseUrl?: string;
 };
 
 export default Movie;

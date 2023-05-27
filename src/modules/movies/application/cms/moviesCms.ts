@@ -2,7 +2,7 @@ import { MovieId } from "@/src/modules/movies/domain/entities/movie";
 
 export type MovieContent = {
   id: MovieId;
-  purchaseUrl: URL | undefined;
+  purchaseUrl: string | undefined;
 };
 
 export default interface MoviesCms {

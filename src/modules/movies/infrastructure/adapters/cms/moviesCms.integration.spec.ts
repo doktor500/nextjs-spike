@@ -30,6 +30,6 @@ describe("Movies cms", () => {
     const movie = await moviesCms.getById(matrixMovieId);
 
     expect(movie?.id).toEqual(matrixMovieId);
-    expect(movie?.purchaseUrl).toEqual(new URL("https://www.primevideo.com/detail/Matrix/0LTTL5BTBJ6UCCYMPS6AI46169"));
+    expect(movie?.purchaseUrl).toEqual("https://www.primevideo.com/detail/Matrix/0LTTL5BTBJ6UCCYMPS6AI46169");
   });
 });
