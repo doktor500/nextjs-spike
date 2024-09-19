@@ -3,7 +3,7 @@ import { config } from "@/src/modules/shared/infrastructure/config";
 import MoviesRepository, { MovieDTO } from "@/src/modules/movies/application/repositories/moviesRepository";
 
 const IMAGE_PATH = "https://www.themoviedb.org/t/p/original";
-const BASE_API_URL = "https://api.themoviedb.org/3/movie/";
+const BASE_API_URL = "https://api.themoviedb.org/3/movie";
 
 type MovieResponse = {
   id: number;
